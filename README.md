@@ -1,2 +1,2 @@
 # RCMBOX
-Really crappy MailzBox program
+# Really crappy MailBox program
