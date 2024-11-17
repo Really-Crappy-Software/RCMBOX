@@ -27,7 +27,7 @@ FILE *schlorpo;
     fprintf(iusearchbtw, "Subject:%s\n From:%s@%s.local\n Body:%s\n\n", subject, getenv("USERNAME"), hostname, body);
     fclose(iusearchbtw);
     fclose(schlorpo);
-  } if (strcmp(argv[1], "create-mbox") == 0) {
+  } else if (strcmp(argv[1], "create-mbox") == 0) {
     getlogin_r(username, 16);
     schlorpo = fopen("/etc/hostname", "r");
     fgets(hostname, 15, schlorpo);
@@ -43,9 +43,9 @@ FILE *schlorpo;
     link(homedir, directory);
     fclose(schlorpo);
     fclose(iusearchbtw);
-  } if (strcmp(argv[1], "-h") == 0) {
-    printf("SYNTAX: rcmbox create-mbox, OR send-to EMAIL  \n create-mbox: creates a mailbox for your user account \n send-to: sends an email to another user \n -h: displays this menu, If you have any issues report them on Github.
+  } else if (strcmp(argv[1], "-h") == 0) {
+    printf("SYNTAX: rcmbox create-mbox, OR send-to EMAIL  \n create-mbox: creates a mailbox for your user account \n send-to: sends an email to another user \n -h: displays this menu \n If you have any issues report them on Github.\n");
 } else {
-          printf("SYNTAX: rcmbox create-mbox, OR send-to EMAIL  \n create-mbox: creates a mailbox for your user account \n send-to: sends an email to another user \n -h: displays this menu, If you have any issues report them on Github.
+          printf("SYNTAX: rcmbox create-mbox, OR send-to EMAIL  \n create-mbox: creates a mailbox for your user account \n send-to: sends an email to another user \n -h: displays this menu \n If you have any issues report them on Github.\n");
       }
       }
