@@ -43,5 +43,9 @@ FILE *schlorpo;
     link(homedir, directory);
     fclose(schlorpo);
     fclose(iusearchbtw);
-  }
-}
+  } if (strcmp(argv[1], "-h") == 0) {
+    printf("SYNTAX: rcmbox create-mbox, OR send-to EMAIL  \n create-mbox: creates a mailbox for your user account \n send-to: sends an email to another user \n -h: displays this menu, If you have any issues report them on Github.
+} else {
+          printf("SYNTAX: rcmbox create-mbox, OR send-to EMAIL  \n create-mbox: creates a mailbox for your user account \n send-to: sends an email to another user \n -h: displays this menu, If you have any issues report them on Github.
+      }
+      }
