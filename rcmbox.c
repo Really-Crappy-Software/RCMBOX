@@ -2,11 +2,12 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <pwd.h>
+#include <sys/stat.h>
 
 int main(int argc, char* argv[]) {
 FILE *iusearchbtw;
 FILE *schlorpo;
+FILE *test;
   char subject[100];
   char body[1000];
   char directory[10] = "/mail/";
@@ -15,6 +16,11 @@ FILE *schlorpo;
 
   if (strcmp(argv[1], "send-to") == 0) {
         strcat(directory, argv[2]);
+            test = fopen(directory, "r");
+    if (test == NULL ) {
+        printf("rcmbox: %s: Not an email that exists, use the 'create-mbox' argument to create one\n", argv[2]);
+        return -1;
+    }
     iusearchbtw = fopen(directory, "a");
       schlorpo = fopen("/etc/hostname", "r");
     fgets(hostname, 15, schlorpo);
@@ -28,6 +34,13 @@ FILE *schlorpo;
     fclose(iusearchbtw);
     fclose(schlorpo);
   } else if (strcmp(argv[1], "create-mbox") == 0) {
+      test = fopen("/mail/", "r");
+      if (test == NULL) {
+        printf("Hmm /mail does not exist. Creating\n");
+        // probably going to segfault
+        fclose(test);
+        mkdir("/mail", S_IRWXU);
+;      }
     getlogin_r(username, 16);
     schlorpo = fopen("/etc/hostname", "r");
     fgets(hostname, 15, schlorpo);
